@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         setContentView(R.layout.activity_main);
 
         presenter = new PresenterImpl(this, new InteractorImpl());
+
         setUpRecyclerview();
+        presenter.putData();
 
     }
 
