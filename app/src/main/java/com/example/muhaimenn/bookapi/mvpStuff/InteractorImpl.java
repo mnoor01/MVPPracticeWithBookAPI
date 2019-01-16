@@ -1,5 +1,7 @@
 package com.example.muhaimenn.bookapi.mvpStuff;
 
+import android.util.Log;
+
 import com.example.muhaimenn.bookapi.apiCall.BookCall;
 import com.example.muhaimenn.bookapi.model.Response;
 import com.example.muhaimenn.bookapi.networkingStuff.RetrofitInstance;
@@ -20,6 +22,8 @@ public class InteractorImpl implements MainContract.GetBookInteractor {
             @Override
             public void onResponse(Call<List<Response>> call, retrofit2.Response<List<Response>> response) {
                 onFinishedListener.onFinished(response.body());
+                Log.d("response", "onResponse: "+"it came here");
+
             }
 
             @Override

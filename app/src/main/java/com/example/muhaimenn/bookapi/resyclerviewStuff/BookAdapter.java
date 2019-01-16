@@ -14,10 +14,15 @@ import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewholder> {
     List<Response> responseList;
+
+    public BookAdapter(List<Response> responseList) {
+        this.responseList = responseList;
+    }
+
     @NonNull
     @Override
     public BookViewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View childView= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.books_itemview,viewGroup,false);
+        View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.books_itemview, viewGroup, false);
         return new BookViewholder(childView);
     }
 
@@ -34,20 +39,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewholder
         return responseList.size();
     }
 
-    public class BookViewholder extends RecyclerView.ViewHolder{
+    public class BookViewholder extends RecyclerView.ViewHolder {
         TextView title, author, genre;
+
         public BookViewholder(@NonNull View itemView) {
             super(itemView);
-            title=itemView.findViewById(R.id.bookTitle);
-            author= itemView.findViewById(R.id.bookAuthor);
-            genre= itemView.findViewById(R.id.genre);
+            title = itemView.findViewById(R.id.bookTitle);
+            author = itemView.findViewById(R.id.bookAuthor);
+            genre = itemView.findViewById(R.id.genre);
         }
     }
 }
-
-
-
-
 
 
 // add
