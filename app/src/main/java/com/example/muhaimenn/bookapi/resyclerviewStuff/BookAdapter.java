@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.muhaimenn.bookapi.OnItemClick;
 import com.example.muhaimenn.bookapi.R;
 import com.example.muhaimenn.bookapi.model.Response;
 
@@ -14,9 +15,11 @@ import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewholder> {
     List<Response> responseList;
+    OnItemClick itemClick;
 
-    public BookAdapter(List<Response> responseList) {
+    public BookAdapter(List<Response> responseList, OnItemClick itemClick) {
         this.responseList = responseList;
+        this.itemClick=itemClick;
     }
 
     @NonNull
@@ -27,10 +30,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewholder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookViewholder bookViewholder, int i) {
+    public void onBindViewHolder(@NonNull final BookViewholder bookViewholder, final int i) {
         bookViewholder.title.setText(responseList.get(i).getName());
         bookViewholder.author.setText(responseList.get(i).getAuthor());
         bookViewholder.genre.setText(responseList.get(i).getGenreS());
+        bookViewholder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemClick.onItemClicked(responseList.get(i));
+            }
+        });
 
     }
 
